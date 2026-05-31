@@ -1,7 +1,39 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.0'
+    id 'jacoco'
 }
+
+jacocoTestReport {
+    dependsOn test
+    dependsOn jacocoTestCoverageVerification
+    reports
+        {
+            xml.required = true
+            html.required = true
+        }
+
+}
+test {
+
+    useJUnitPlatform()
+
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestCoverageVerification {
+
+    violationRules {
+
+        rule {
+            limit {
+                minimum = 0.70
+            }
+        }
+    }
+}
+
+
 
 group = 'com.example.filegenerator'
 version = '0.0.1-SNAPSHOT'
