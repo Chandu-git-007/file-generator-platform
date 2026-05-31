@@ -1,0 +1,16 @@
+// Root build.gradle for orchestration/deployment-level tasks.
+// The actual Spring Boot application lives in the submodule
+// ':file-generation-system:service'. Keep this file minimal and
+// add deployment tasks here as needed.
+
+plugins {
+    id 'base'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+subprojects {
+    // default repositories for subprojects
+    repositories { mavenCentral() }
+}

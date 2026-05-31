@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+}
+
+group = 'com.example.filegenerator'
+version = '0.0.1-SNAPSHOT'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.4'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.2.4'
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.4'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
