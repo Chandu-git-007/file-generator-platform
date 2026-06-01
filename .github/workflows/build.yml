@@ -34,3 +34,15 @@
 
         - name: Build Application
           run: ./gradlew clean build
+
+        - name: Build And Generate Coverage
+          run: ./gradlew clean test jacocoTestReport
+
+
+        - name: Upload JaCoCo Report
+          uses: actions/upload-artifact@v4
+          with:
+           name: index.html
+           path: service/build/reports/jacoco/test/html
+
+
