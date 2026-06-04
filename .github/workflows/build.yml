@@ -32,5 +32,14 @@
         - name: Grant Execute Permission
           run: chmod +x gradlew
 
+        - name: print workspace info
+          run: |
+            echo "current dir"
+            pwd
+            echo "list files"
+            ls -la
+            echo "java version"
+            java -version
+
         - name: Build Application
           run: ./gradlew clean build
