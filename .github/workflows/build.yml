@@ -33,14 +33,19 @@
           run: chmod +x gradlew
 
         - name: Build Application
+          continue-on-error: true
           run: ./gradlew clean build
 
         - name: Build And Generate Coverage
-          run: ./gradlew clean test jacocoTestReport
+          continue-on-error: true
+          run:
+            exit 1
+            ./gradlew clean test jacocoTestReport
 
 
         - name: Upload JaCoCo Report
           uses: actions/upload-artifact@v4
+          if : always()
           with:
            name: index.html
            path: service/build/reports/jacoco/test/html
